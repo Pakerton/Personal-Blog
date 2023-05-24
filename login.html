@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" th:href="@{/setting.css}">
+	<style>
+		a:link{
+          color: blue;
+         }
+
+        a:visited{
+          color: gray;
+         }
+
+        a:hover{
+          color: yellow;
+         }
+
+        a:active{
+          color: red;
+         }
+	</style>
+    
+</head>
+
+<div style="height: 400px; width: 400px;">
+<body>
+	<br><br>
+	<h1 style="text-align: center; font-family: 'Courier New', Courier, monospace, sans-serif;">Login</h1>
+	<hr>
+    <form th:action="@{/user-login}" method="post" >
+	    <p th:if="${wrongInput == true}" style = "color: red;">Wrong username or password</p>
+		<label  style="font-family: Arial, Helvetica, sans-serif; " for="name">Username: </label>
+	    <br>
+	    <input style="font-family: Arial, Helvetica, sans-serif;" id="username" name="username" type="text" placeholder="Enter Email" required>
+      
+	  <br>
+	  <br>
+      
+	    <label  for = "password">Password: </label>
+		<br>
+	    <input  id="password" name="password" type="password" placeholder="Password" required>
+	  
+	  <br>
+	  <br>
+     
+	  <input type="submit" style="color: white; height: 30px; width: 170px;;" value="Login">
+	  
+	  <hr>
+	  <label style="text-align: center; ">Don't have account?<a target="_blank" title="You will be directed to another website." th:href="@{/register}">Register</a></label>
+	  
+	  <br>
+
+	
+    </form>
+	
+</body>
+</div>
+
+</html>

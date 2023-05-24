@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>create_new_blog</title>
+        <meta charset="utf-8">
+        <style>
+            tr{
+                border: solid;
+            }
+    
+            td{
+                border: solid;
+            }
+         
+            body {
+                background-color: darkgray;
+            }   
+
+            textarea{
+                background-color: lightgray;
+            }
+        </style>
+    </head>
+
+    <body>
+       
+            
+            
+                    <form action="" method="post">
+                        <table style="height: 100vh; width: 100vw; text-align: center;">
+                            <tr>
+                                <td>
+                                    <div id="title">
+                                        <label for="title">Title</label><br>
+                                        <textarea rows="1" cols="90" name="title" placeholder="Write the title of your blog" required></textarea>
+                                        <br>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="text" style="position:relative;">
+                                        <label for="text">Blog Text</label><br>
+                                        <textarea rows="40" cols="90" name="text" placeholder="Write your blog" style="overflow-y: scroll;" required></textarea>
+                                        <br>
+                                        <br>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <input type="submit" value="Upload">
+                                </td>
+                            </tr>
+                    </form>
+             
+       
+    </body>
+
+</html>

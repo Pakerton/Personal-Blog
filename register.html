@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="setting.css">
+	<style>
+		a:link{
+          color:blue;
+         }
+
+        a:visited{
+          color: gray;
+         }
+
+        a:hover{
+          color: yellow;
+         }
+
+        a:active{
+          color: red;
+         }
+	</style>
+</head>
+
+<body>
+	<div>
+	<br><br>
+	<h1 style="text-align: center;">Register</h1>
+	<p style="text-align: center;">Please fill in this form to create an account.</p>
+	<hr>
+
+    <form action="/user-register" method="post" >
+      <p style = "color: red" th:if = "${usernameIsTaken}">The username is already taken.</p>
+	  <label for="email">Username: </label>
+	  <br>
+	  <input id="email" name = "username" type="text" placeholder="Your username" required>
+
+	  <br>
+	  <br>
+
+	  <label for="password">Password: </label>
+	  <br>
+	  <input id="password" name = "password" type="text" placeholder="Exp. 12345" required>
+
+	  <br>
+	  <br>
+　　　　　<p style = "color: red" th:if = "${rePasswordNotMatched}">The password does not match the previous one.</p>
+	  <label for="rePassword" style="text-align : center " >Repeat Password: </label>
+	  <br>
+	  <input id="rePassword" name = "rePassword" type="text" placeholder="Repeat your password" required>
+
+	  <br>
+	  <br>
+
+	  <hr>
+
+	  <p style="text-align: center;">By creating an account you agree to our <a target="_blank" href="https://policies.google.com/terms?hl=en-US">Terms & Privacy.</a><input type="radio" required></p>
+
+	  
+     
+	  <input type="submit" value="Register" style=" color: white; height: 50px;width: 500px;">
+    </form>
+	
+	</div>
+
+	
+
+	
+</body>
+
+
+</html>
