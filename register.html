@@ -3,7 +3,7 @@
 <head>
 	<title>Register</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="setting.css">
+	<link rel="stylesheet" th:href="@{/setting.css}">
 	<style>
 		a:link{
           color:blue;
@@ -32,13 +32,21 @@
 
     <form action="/user-register" method="post" >
       <p style = "color: red" th:if = "${usernameIsTaken}">The username is already taken.</p>
-	  <label for="email">Username: </label>
+	  <label for="username">Username: </label>
 	  <br>
-	  <input id="email" name = "username" type="text" placeholder="Your username" required>
+	  <input id="username" name = "username" type="text" placeholder="Your username" required>
 
 	  <br>
 	  <br>
+	  
+	  <p style = "color: red" th:if = "${emailIsTaken}">The email address is already taken.</p>
+	  <label for="email">Email: </label>
+	  <br>
+	  <input id="email" name = "email" type="email" placeholder="Your email" required>
 
+      <br>
+	  <br>
+	  
 	  <label for="password">Password: </label>
 	  <br>
 	  <input id="password" name = "password" type="text" placeholder="Exp. 12345" required>
