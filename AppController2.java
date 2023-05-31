@@ -70,7 +70,7 @@ public class AppController2 {
     			mav.addObject("blogText", "No Text");
     			List<UserBlog> text = blogServices.findAllBlog();
     			for(UserBlog t: text) {
-    				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+    				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
     			}
     			
         		mav.addObject("blogText", blogText);
@@ -99,7 +99,7 @@ public class AppController2 {
     			mav.addObject("blogText", "No Text");
     			List<UserBlog> text = blogServices.findAllBlog();
     			for(UserBlog t: text) {
-    				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+    				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
     			}
     			
         		mav.addObject("blogText", blogText);
@@ -162,7 +162,7 @@ public class AppController2 {
     			mav.addObject("blogText", "No Text");
     			List<UserBlog> text2 = blogServices.findAllBlog();
     			for(UserBlog t: text2) {
-    				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+    				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
     			}
     			
         		mav.addObject("blogText", blogText);
@@ -183,6 +183,7 @@ public class AppController2 {
     
     @PostMapping("/updateBlog")
     public ModelAndView updateBlog(@RequestParam String title, @RequestParam String text, @RequestParam Long id, ModelAndView mav) {
+    	   blogServices.DelBlog(title);
     	if(blogServices.update(id, title, text)) {
 
     		if(blogServices.findAllBlog()==null) {
@@ -197,7 +198,7 @@ public class AppController2 {
     			mav.addObject("blogText", "No Text");
     			List<UserBlog> text2 = blogServices.findAllBlog();
     			for(UserBlog t: text2) {
-    				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+    				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
     			}
     			
         		mav.addObject("blogText", blogText);
@@ -210,8 +211,9 @@ public class AppController2 {
     	}else {
     		mav.addObject("title", title);
     		mav.addObject("text", text);
+    		mav.addObject("id", id);
     		
-    		mav.setViewName("CreateBlog.html");
+    		mav.setViewName("updateBlog.html");
     		return mav;
     	}
     }
@@ -227,7 +229,7 @@ public class AppController2 {
         		}else {
         			List<UserBlog> text2 = blogServices.findAllBlog();
         			for(UserBlog t: text2) {
-        				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+        				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
         			}
         			
             		mav.addObject("blogText", blogText);
@@ -255,7 +257,7 @@ public class AppController2 {
         		}else {
         			List<UserBlog> text = blogServices.findAllBlog();
         			for(UserBlog t: text) {
-        				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+        				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
         			}
         			
             		mav.addObject("blogText", blogText);
@@ -288,7 +290,7 @@ public class AppController2 {
         		}else {
         			List<UserBlog> text = blogServices.findAllBlog();
         			for(UserBlog t: text) {
-        				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+        				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
         			}
         			
             		mav.addObject("blogText", blogText);
@@ -309,7 +311,7 @@ public class AppController2 {
     		mav.setViewName("updateBlog.html");
 //    		blogServices.DelBlog(title);
     		return mav;
-    	}else {
+    	}else{
     		if(blogServices.searchBlog(title)!=null) {
         		blogText = blogText + "\n" + "\n" + blogServices.searchBlog(title).getTitle() + "\n" + blogServices.searchBlog(title).getText();
         		mav.addObject("blogText", blogText);
@@ -318,7 +320,7 @@ public class AppController2 {
         		mav.setViewName("BlogHP.html");
         		blogText = "";
         		return mav;
-        	}else {
+        	}else if(blogServices.searchBlog(title)==null){
         		if(blogServices.findAllBlog()==null) {     		
             		mav.addObject("blogText", "No Text");
 
@@ -327,7 +329,7 @@ public class AppController2 {
             		}else {
             			List<UserBlog> text = blogServices.findAllBlog();
             			for(UserBlog t: text) {
-            				blogText = blogText + "\n" + "\n" +"TITLE: "+ t.getTitle() + "\n" +"TEXT:"+ t.getText();
+            				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
             			}
             			
                 		mav.addObject("blogText", blogText);
@@ -336,6 +338,27 @@ public class AppController2 {
                 		mav.setViewName("BlogHP.html");
                 		blogText = "";
                 		return mav;
-            		}}}
+            		}
+        		}
+    		}
+    	if(blogServices.findAllBlog()==null) {     		
+    		mav.addObject("blogText", "No Text");
+
+    		mav.setViewName("BlogHP.html");
+    		return mav;
+    		}else {
+    			List<UserBlog> text = blogServices.findAllBlog();
+    			for(UserBlog t: text) {
+    				blogText = blogText + "\n" + "\n" + t.getTitle() + "\n" + t.getText();
+    			}
+    			
+        		mav.addObject("blogText", blogText);
+        		
+
+        		mav.setViewName("BlogHP.html");
+        		blogText = "";
+        		return mav;
+    		}
+		
     }
 }

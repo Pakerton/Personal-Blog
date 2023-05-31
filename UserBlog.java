@@ -39,6 +39,13 @@ public class UserBlog {
 		this.title=title;
 		this.text=text;
 	}
+    
+    public UserBlog(Long id, String title, String text) {
+		super();
+		this.blogId=id;
+		this.title=title;
+		this.text=text;
+	}
 	
 	public UserBlog() {
 		

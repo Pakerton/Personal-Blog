@@ -43,8 +43,12 @@ public class BlogService {
 	}
 	
 	public String editBlog(String title) {
+		if(repository.findByTitle(title)!=null) {
 		return repository.findByTitle(title).getText();	
+		}else {
+			return null;
 		}
+	}
 
 	public UserBlog searchBlog(String title) {
 		return repository.findByTitle(title);
@@ -52,8 +56,9 @@ public class BlogService {
 	}
 
 	public boolean update(Long id, String title, String text) {
-		repository.findByBlogId(id).setTitle(title);
-		repository.findByBlogId(id).setText(text);;
+		if(repository.save(new UserBlog(id, title, text)) != null) {
 		return true;
+	}else {
+		return false;
 	}
-}
+}}
