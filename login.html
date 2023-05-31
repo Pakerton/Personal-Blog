@@ -3,7 +3,7 @@
 <head>
 	<title>Login</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" th:href="@{/setting.css}">
+	<link rel="stylesheet" th:href="@{/css/setting.css}">
 	<style>
 		a:link{
           color: blue;
@@ -20,20 +20,112 @@
         a:active{
           color: red;
          }
+         input[type=submit]{
+    background-color:green;
+  }
+
+  input[type=submit]:hover{
+    background-color:orange;
+  }
+
+  input[type=submit]:active{
+    background-color:darkgreen;
+  }
+
+input[type=text]{
+    text-align: center;
+    
+}
+
+form{
+    margin-top: auto;
+    margin-left: auto; 
+ }
+
+html{
+    background-image:url("mountains.jpg");
+      background-repeat: no-repeat;
+    background-size: cover;
+    height:100vh;
+    width:100vw;
+}
+
+div {
+  margin-top: 50vh;
+  margin-left: 50vw;
+  background-color: aliceblue;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 20%;
+  border-color: green;
+  height: 400px;
+  width: 300px;
+  transform: translate(-50%,-50%);
+ text-align: center;
+  /* position: relative;
+  
+  top:50%;
+  left:50%; */
+  /* right:0;
+  bottom:0; */
+  /* transform: translate(50%, 50%); */
+  
+}
+
+.help{
+    position: relative;
+    right: 0.5;
+    top:0.5;
+    
+}
+
+h1{
+  color: black;
+  text-align: center;
+}
+
+p{
+  color:black;
+  text-align: center;
+}
+
+label{
+  color: black;
+  
+  
+}
+label>a:link{
+        color:blue;
+
+}
+label>a:visited{
+    color:gray;
+
+}
+
+label>a:hover{
+    color: yellow;
+
+}
+label>a:active{
+    color:red;
+
+}
 	</style>
     
 </head>
 
-<div style="height: 400px; width: 400px;">
-<body>
+
+<body style="height: 400px; width: 400px;">
+<div>
 	<br><br>
 	<h1 style="text-align: center; font-family: 'Courier New', Courier, monospace, sans-serif;">Login</h1>
 	<hr>
     <form th:action="@{/user-login}" method="post" >
 	    <p th:if="${wrongInput == true}" style = "color: red;">Wrong username or password</p>
-		<label  style="font-family: Arial, Helvetica, sans-serif; " for="name">Username: </label>
+		<label  style="font-family: Arial, Helvetica, sans-serif; " for="username">Username: </label>
 	    <br>
-	    <input style="font-family: Arial, Helvetica, sans-serif;" id="username" name="username" type="text" placeholder="Enter Email" required>
+	    <input style="font-family: Arial, Helvetica, sans-serif;" id="username" name="username" type="text" placeholder="Enter username" required>
       
 	  <br>
 	  <br>
@@ -54,8 +146,9 @@
 
 	
     </form>
+    </div>
 	
 </body>
-</div>
+
 
 </html>

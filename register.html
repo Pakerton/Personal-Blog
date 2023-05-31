@@ -3,7 +3,7 @@
 <head>
 	<title>Register</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" th:href="@{/setting.css}">
+	<link rel="stylesheet" th:href="@{/css/setting.css}">
 	<style>
 		a:link{
           color:blue;
@@ -20,6 +20,98 @@
         a:active{
           color: red;
          }
+         
+         input[type=submit]{
+    background-color:green;
+  }
+
+  input[type=submit]:hover{
+    background-color:orange;
+  }
+
+  input[type=submit]:active{
+    background-color:darkgreen;
+  }
+
+input[type=text]{
+    text-align: center;
+    
+}
+
+form{
+    margin-top: auto;
+    margin-left: auto; 
+ } 
+
+html{
+    background-image:url("mountains.jpg");
+      background-repeat: no-repeat;
+    background-size: cover;
+    height:100vh;
+    width:100vw;
+}
+
+div {
+  margin-top: 50vh;
+  margin-left: 50vw;
+  background-color: aliceblue;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 20%;
+  border-color: green;
+  height: 600px;
+  width: 600px;
+  transform: translate(-50%,-50%);
+ text-align: center;
+  /* position: relative;
+  
+  top:50%;
+  left:50%; */
+  /* right:0;
+  bottom:0; */
+  /* transform: translate(50%, 50%); */
+  
+}
+
+.help{
+    position: relative;
+    right: 0.5;
+    top:0.5;
+    
+}
+
+h1{
+  color: black;
+  text-align: center;
+}
+
+p{
+  color:black;
+  text-align: center;
+}
+
+label{
+  color: black;
+  
+  
+}
+label>a:link{
+        color:blue;
+
+}
+label>a:visited{
+    color:gray;
+
+}
+
+label>a:hover{
+    color: yellow;
+
+}
+label>a:active{
+    color:red;
+
+}
 	</style>
 </head>
 
@@ -40,23 +132,24 @@
 	  <br>
 	  
 	  <p style = "color: red" th:if = "${emailIsTaken}">The email address is already taken.</p>
-	  <label for="email">Email: </label>
+	  <label for="userEmail">Email: </label>
 	  <br>
-	  <input id="email" name = "email" type="email" placeholder="Your email" required>
+	  <input id="email" name = "userEmail" type="email" placeholder="Your email" required>
 
       <br>
 	  <br>
 	  
 	  <label for="password">Password: </label>
 	  <br>
-	  <input id="password" name = "password" type="text" placeholder="Exp. 12345" required>
+	  <input id="password" name = "password" type="password" placeholder="Exp. 12345" required>
 
 	  <br>
 	  <br>
 　　　　　<p style = "color: red" th:if = "${rePasswordNotMatched}">The password does not match the previous one.</p>
-	  <label for="rePassword" style="text-align : center " >Repeat Password: </label>
+      <br>
+	  <label for="rePassword">Repeat Password: </label>
 	  <br>
-	  <input id="rePassword" name = "rePassword" type="text" placeholder="Repeat your password" required>
+	  <input id="rePassword" name = "rePassword" type="password" placeholder="Repeat your password" required>
 
 	  <br>
 	  <br>

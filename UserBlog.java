@@ -1,13 +1,20 @@
 package com.example.demo.models;
 
-import java.sql.Date;
-import java.sql.Time;
+
+
+
+
+
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,63 +22,54 @@ import jakarta.persistence.Table;
 public class UserBlog {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
-    private Long blog_id;
-	@Column(name="admin_id")
-    private Long admin_id;
-	@Column(name="blog_name")
-    private String blog_name;
-	@Column(name="blog_text")
-    private String blog_text;
-	@Column(name="publish_date")
-    private Date publish_date;
-	@Column(name="publish_time")
-    private Time publish_time;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long blogId;
+//	@Column(name="admin_id")
+//    private Long admin_id;
+	@Column(name="Title")
+    private String title;
 	
-    public UserBlog(Long admin_id, String blog_name, String blog_text, Date publish_date, Time publish_time) {
-		
+	@JdbcTypeCode(SqlTypes.LONG32VARCHAR)
+	@Column(name="Text")
+    private String text;
+	
+	
+    public UserBlog(String title, String text) {
+		super();
+		this.title=title;
+		this.text=text;
 	}
 	
 	public UserBlog() {
 		
 	}
 	
-    public Long getBlog_id() {
-		return blog_id;
+   
+public Long getBlogId() {
+		return blogId;
 	}
-	public void setBlog_id(int blog_id) {
-		this.blog_id = (long) blog_id;
+
+	public void setBlogId(Long blogId) {
+		this.blogId = blogId;
 	}
-	public Long getAdmin_id() {
-		return admin_id;
+
+	//	public Long getAdmin_id() {
+//		return admin_id;
+//	}
+//	public void setAdmin_id(int admin_id) {
+//		this.admin_id = (long) admin_id;
+//	}
+	public String getTitle() {
+		return title;
 	}
-	public void setAdmin_id(int admin_id) {
-		this.admin_id = (long) admin_id;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getBlog_name() {
-		return blog_name;
+	public String getText() {
+		return text;
 	}
-	public void setBlog_name(String blog_name) {
-		this.blog_name = blog_name;
+	public void setText(String text) {
+		this.text = text;
 	}
-	public String getBlog_text() {
-		return blog_text;
-	}
-	public void setBlog_text(String blog_text) {
-		this.blog_text = blog_text;
-	}
-	public Date getPublish_date() {
-		return publish_date;
-	}
-	public void setPublish_date(Date publish_date) {
-		this.publish_date = publish_date;
-	}
-	public Time getPublish_time() {
-		return publish_time;
-	}
-	public void setPublish_time(Time publish_time) {
-		this.publish_time = publish_time;
-	}
-    
-    
+	
 }
